@@ -1,0 +1,264 @@
+<mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="step1FormGroup">
+        <form [formGroup]="step1FormGroup">
+            <ng-template matStepLabel>General Information</ng-template>
+            <div class="row">
+                <div class="col-3">
+                    <mat-form-field>
+                        <mat-label>PN *</mat-label>
+                        <mat-select formControlName="pnNo">
+                            <mat-option *ngFor="let pn of pnTxt" [value]="pn">
+                                {{pn}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>PN Description *</mat-label>
+                        <mat-select formControlName="pnDesc">
+                            <mat-option *ngFor="let pnTxt of pnDescription" [value]="pnTxt">
+                                {{pnTxt}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <mat-checkbox formControlName="serialized">Serialized</mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox formControlName="timeLife">Time Life</mat-checkbox>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>NSN</mat-label>
+                        <input matInput formControlName="nsn" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Item Classification *</mat-label>
+                        <mat-select formControlName="itemClassification" multiple>
+                            <mat-option *ngFor="let classif of classificationItems" [value]="classif">{{classif}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Item Group</mat-label>
+                        <mat-select formControlName="itemGroup" multiple>
+                            <mat-option *ngFor="let itemG of itemGroupTxt" [value]="itemG">{{itemG}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="acquired">
+                            <mat-label class="mr-3">Acquired</mat-label>
+                            <mat-radio-button name="acquired" value="buy">Buy</mat-radio-button>
+                            <mat-radio-button name="acquired" value="make">Make</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col-3">
+
+                    <div>
+                        <mat-checkbox formControlName="expirationDate">Expiration Date</mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox formControlName="shelfLife">Shelf Life</mat-checkbox>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Provision</mat-label>
+                        <mat-select formControlName="provision" multiple>
+                            <mat-option *ngFor="let prov of provisionTxt" [value]="prov">{{prov}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <mat-checkbox formControlName="hazardous">Hazardous Material</mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox formControlName="pma">PMA</mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox formControlName="der">DER</mat-checkbox>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Manufacturer *</mat-label>
+                        <mat-select formControlName="manufacture" multiple>
+                            <mat-option *ngFor="let manufac of manufacturerTxt" [value]="manufac">{{manufac}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <mat-checkbox formControlName="schematic">Schematic</mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox formControlName="rfq">RFQ Tracking</mat-checkbox>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <mat-form-field>
+                        <mat-label>GL Acct. *</mat-label>
+                        <mat-select formControlName="glAccount" multiple>
+                            <mat-option *ngFor="let gl of glAccountTxt" [value]="gl">{{gl}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Purchase UOM *</mat-label>
+                        <mat-select formControlName="purchaseUOM" multiple>
+                            <mat-option *ngFor="let uom of purchaseUOMTxt" [value]="uom">{{uom}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Stock UOM</mat-label>
+                        <mat-select formControlName="stockUOM" multiple>
+                            <mat-option *ngFor="let stock of stockUOMTxt" [value]="stock">{{stock}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Consume UOM</mat-label>
+                        <mat-select formControlName="consumeUOM" multiple>
+                            <mat-option *ngFor="let consume of consumeUOMTxt" [value]="consume">{{consume}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="row">
+                        <mat-label class="col-12">Lead Time</mat-label>
+                        <mat-form-field class="col-6">
+                            <input matInput formControlName="days" type="number" placeholder="Days">
+                        </mat-form-field>
+                        <mat-form-field class="col-6">
+                            <input matInput formControlName="hours" type="number" placeholder="Hours">
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Stock Level</mat-label>
+                        <input matInput formControlName="stockLevel">
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field>
+                        <mat-label>Reorder Point</mat-label>
+                        <input matInput formControlName="reorderPoint">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Reorder Qty</mat-label>
+                        <input matInput formControlName="reorderQty">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Min Order Qty</mat-label>
+                        <input matInput formControlName="minOrderQty">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Priority</mat-label>
+                        <mat-select formControlName="priority" multiple>
+                            <mat-option *ngFor="let prior of priorityTxt" [value]="prior">{{prior}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Integration With</mat-label>
+                        <mat-select formControlName="integration" multiple>
+                            <mat-option *ngFor="let integre of integrationTxt" [value]="integre">{{integre}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Memo</mat-label>
+                        <input matInput formControlName="memo">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!-- <div (click)="addItem()"><i>click</i></div>
+            <div formArrayName="items">
+                <div *ngFor="let item of firstFormGroup.get('items').controls; let i = index;">
+                    <div [formGroupName]="i">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>PN</label>
+                                    <select class="form-control" formControlName="firstCtrl">
+                                        <option>Select</option>
+                                        <option>PN 1</option>
+                                        <option>PN 1</option>
+                                        <option>PN 1</option>
+                                        <option>PN 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">asdfasdf</div>
+                            <div class="col-3">asdfasdf</div>
+                            <div class="col-3">asdfasdf</div>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>PN</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let food of foods" formControlName="firstCtrl" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div> -->
+            <div class="text-center">
+                <button type="submit" class="mr-5" mat-raised-button (click)="submitForm1()">Submit</button>
+                <button mat-raised-button matStepperNext>Next</button>
+            </div>
+
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Aircraft Information</ng-template>
+            <div class="text-center">No Fields</div>
+            <!-- <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div> -->
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup" [optional]="isOptional">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>ATA Chapter</ng-template>
+            <div class="text-center">No Fields</div>
+            <!-- <mat-form-field>
+                <input matInput placeholder="Address" formControlName="thirdCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div> -->
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fourFormGroup" [optional]="isOptional">
+        <form [formGroup]="fourFormGroup">
+            <ng-template matStepLabel>Purchase and Sales</ng-template>
+            <div class="text-center">No Fields</div>
+            <!-- <mat-form-field>
+                <input matInput placeholder="Address" formControlName="fourCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div> -->
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fiveFormGroup" [optional]="isOptional">
+        <form [formGroup]="fiveFormGroup">
+            <ng-template matStepLabel>Export Information</ng-template>
+            <div class="text-center">No Fields</div>
+            <!-- <mat-form-field>
+                <input matInput placeholder="Address" formControlName="fiveCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div> -->
+        </form>
+    </mat-step>
+
+    <!-- <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step> -->
+</mat-horizontal-stepper>

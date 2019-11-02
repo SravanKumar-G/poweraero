@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.field-style {
+    margin-bottom: 15px;
+}
+
+.field-style label {
+    color: #333;
+}
+
+.field-style input[type="text"],
+.field-style input[type="email"],
+.field-style input[type="password"],
+.field-style select {
+    height: 34px;
+    line-height: 34px;
+}
+
+.mat-horizontal-stepper-header-container {
+    border-bottom: solid 1px #dedede;
+    margin-bottom: 20px;
+}
